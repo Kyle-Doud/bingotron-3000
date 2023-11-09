@@ -7,6 +7,7 @@ import {
   useMatch,
   useParams
 } from "react-router-dom";
+import Home from "./Components/Home";
 
 export default function App() {
   return (
@@ -23,10 +24,6 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
 }
 
 function About() {
