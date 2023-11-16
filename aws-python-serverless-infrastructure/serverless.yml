@@ -1,0 +1,16 @@
+org: krdoud127
+app: aws-python-serverless-infrastructure
+service: aws-python-serverless-infrastructure
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
