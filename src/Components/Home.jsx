@@ -7,20 +7,29 @@ import Typography from '@mui/joy/Typography';
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/Modal';
+import Sheet from '@mui/joy/Sheet';
+import Button from '@mui/joy/Button';
+import FormControl from '@mui/joy/FormControl';
+import FormLabel from '@mui/joy/FormLabel';
+import Input from '@mui/joy/Input';
+import DialogTitle from '@mui/joy/DialogTitle';
+import DialogContent from '@mui/joy/DialogContent';
+import Stack from '@mui/joy/Stack';
+import spaces from "../Constants/spaces.json";
 
 
 const bingo = 'BINGO'.split('');
-const categories = 'this 25 word list represents the categories of a bingo game 12 FREE 14 15 16 17 18 19 20 21 22 23 24 25'.split(' ');
+const categories = spaces.spaces;
 const fullGridText = bingo.concat(categories);
 export default function Home() {
   const [open, setOpen] = React.useState(false);
   return (
-    <div>
+    <>
       <Grid container spacing={2}>
-        {fullGridText.map(text => {
-          return (<Grid xs={2.4}>
+        {fullGridText.map((text, index) => {
+          return (<Grid xs={2.4} key={text + index}>
             <Item>
-              <Card variant="outlined" onClick={() => setOpen(true)}> 
+              <Card variant="outlined" onClick={() => setOpen(true)}>
                 <CardContent>
                   <Typography>{text}</Typography>
                 </CardContent>
@@ -29,13 +38,32 @@ export default function Home() {
           </Grid>)
         })}
       </Grid>
-      <Modal 
+      <Modal
         open={open}
         onClose={() => setOpen(false)}>
         <ModalDialog>
-          <ModalClose />
-          <Typography>Modal title</Typography>
+        <h1>some text</h1>
+          {/* <DialogTitle>Create new project</DialogTitle>
+          <DialogContent>Fill in the information of the project.</DialogContent> */}
+          {/* <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              setOpen(false);
+            }}
+          >
+            <Stack spacing={2}>
+              <FormControl>
+                <FormLabel>Name</FormLabel>
+                <Input autoFocus required />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Description</FormLabel>
+                <Input required />
+              </FormControl>
+              <Button type="submit">Submit</Button>
+            </Stack>
+          </form> */}
         </ModalDialog>
       </Modal>
-    </div>)
+    </>)
 }
